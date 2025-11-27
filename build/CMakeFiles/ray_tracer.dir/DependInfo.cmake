@@ -12,6 +12,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/graph_seeker/Documents/WS/ComputerGraphics/ray_tracer/src/image/image.cpp" "CMakeFiles/ray_tracer.dir/src/image/image.cpp.o" "gcc" "CMakeFiles/ray_tracer.dir/src/image/image.cpp.o.d"
   "/home/graph_seeker/Documents/WS/ComputerGraphics/ray_tracer/src/main.cpp" "CMakeFiles/ray_tracer.dir/src/main.cpp.o" "gcc" "CMakeFiles/ray_tracer.dir/src/main.cpp.o.d"
   "/home/graph_seeker/Documents/WS/ComputerGraphics/ray_tracer/src/ray/ray.cpp" "CMakeFiles/ray_tracer.dir/src/ray/ray.cpp.o" "gcc" "CMakeFiles/ray_tracer.dir/src/ray/ray.cpp.o.d"
+  "/home/graph_seeker/Documents/WS/ComputerGraphics/ray_tracer/src/renderer/renderer.cpp" "CMakeFiles/ray_tracer.dir/src/renderer/renderer.cpp.o" "gcc" "CMakeFiles/ray_tracer.dir/src/renderer/renderer.cpp.o.d"
   "/home/graph_seeker/Documents/WS/ComputerGraphics/ray_tracer/src/rgb/rgb.cpp" "CMakeFiles/ray_tracer.dir/src/rgb/rgb.cpp.o" "gcc" "CMakeFiles/ray_tracer.dir/src/rgb/rgb.cpp.o.d"
   "/home/graph_seeker/Documents/WS/ComputerGraphics/ray_tracer/src/sphere/sphere.cpp" "CMakeFiles/ray_tracer.dir/src/sphere/sphere.cpp.o" "gcc" "CMakeFiles/ray_tracer.dir/src/sphere/sphere.cpp.o.d"
   "/home/graph_seeker/Documents/WS/ComputerGraphics/ray_tracer/src/surface/surface.cpp" "CMakeFiles/ray_tracer.dir/src/surface/surface.cpp.o" "gcc" "CMakeFiles/ray_tracer.dir/src/surface/surface.cpp.o.d"

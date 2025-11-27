@@ -225,6 +225,30 @@ src/ray/ray.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ray_tracer.dir/build.make CMakeFiles/ray_tracer.dir/src/ray/ray.cpp.s
 .PHONY : src/ray/ray.cpp.s
 
+src/renderer/renderer.o: src/renderer/renderer.cpp.o
+.PHONY : src/renderer/renderer.o
+
+# target to build an object file
+src/renderer/renderer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ray_tracer.dir/build.make CMakeFiles/ray_tracer.dir/src/renderer/renderer.cpp.o
+.PHONY : src/renderer/renderer.cpp.o
+
+src/renderer/renderer.i: src/renderer/renderer.cpp.i
+.PHONY : src/renderer/renderer.i
+
+# target to preprocess a source file
+src/renderer/renderer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ray_tracer.dir/build.make CMakeFiles/ray_tracer.dir/src/renderer/renderer.cpp.i
+.PHONY : src/renderer/renderer.cpp.i
+
+src/renderer/renderer.s: src/renderer/renderer.cpp.s
+.PHONY : src/renderer/renderer.s
+
+# target to generate assembly for a file
+src/renderer/renderer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ray_tracer.dir/build.make CMakeFiles/ray_tracer.dir/src/renderer/renderer.cpp.s
+.PHONY : src/renderer/renderer.cpp.s
+
 src/rgb/rgb.o: src/rgb/rgb.cpp.o
 .PHONY : src/rgb/rgb.o
 
@@ -390,6 +414,9 @@ help:
 	@echo "... src/ray/ray.o"
 	@echo "... src/ray/ray.i"
 	@echo "... src/ray/ray.s"
+	@echo "... src/renderer/renderer.o"
+	@echo "... src/renderer/renderer.i"
+	@echo "... src/renderer/renderer.s"
 	@echo "... src/rgb/rgb.o"
 	@echo "... src/rgb/rgb.i"
 	@echo "... src/rgb/rgb.s"

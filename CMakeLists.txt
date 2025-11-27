@@ -14,5 +14,6 @@ add_executable(${PROJECT_NAME_VAR}
     src/sphere/sphere.cpp
     src/camera/camera.cpp
     src/surface_group/surface_group.cpp
+    src/renderer/renderer.cpp
     src/hit_record/hit_record.h
 )

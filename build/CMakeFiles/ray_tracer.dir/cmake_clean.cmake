@@ -8,6 +8,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/ray_tracer.dir/src/main.cpp.o.d"
   "CMakeFiles/ray_tracer.dir/src/ray/ray.cpp.o"
   "CMakeFiles/ray_tracer.dir/src/ray/ray.cpp.o.d"
+  "CMakeFiles/ray_tracer.dir/src/renderer/renderer.cpp.o"
+  "CMakeFiles/ray_tracer.dir/src/renderer/renderer.cpp.o.d"
   "CMakeFiles/ray_tracer.dir/src/rgb/rgb.cpp.o"
   "CMakeFiles/ray_tracer.dir/src/rgb/rgb.cpp.o.d"
   "CMakeFiles/ray_tracer.dir/src/sphere/sphere.cpp.o"

@@ -83,7 +83,6 @@ CMakeFiles/ray_tracer.dir/src/main.cpp.o: \
  /home/graph_seeker/Documents/WS/ComputerGraphics/ray_tracer/src/camera/camera.h \
  /home/graph_seeker/Documents/WS/ComputerGraphics/ray_tracer/src/camera/../vector3/vector3.h \
  /home/graph_seeker/Documents/WS/ComputerGraphics/ray_tracer/src/camera/../ray/ray.h \
- /home/graph_seeker/Documents/WS/ComputerGraphics/ray_tracer/src/surface/surface.h \
  /home/graph_seeker/Documents/WS/ComputerGraphics/ray_tracer/src/vector3/vector3.h \
  /home/graph_seeker/Documents/WS/ComputerGraphics/ray_tracer/src/image/image.h \
  /home/graph_seeker/Documents/WS/ComputerGraphics/ray_tracer/src/image/../rgb/rgb.h \
@@ -190,9 +189,7 @@ CMakeFiles/ray_tracer.dir/src/main.cpp.o: \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
  /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
  /usr/include/c++/15.2.1/bits/fstream.tcc \
- /home/graph_seeker/Documents/WS/ComputerGraphics/ray_tracer/src/ray/ray.h \
  /home/graph_seeker/Documents/WS/ComputerGraphics/ray_tracer/src/rgb/rgb.h \
- /home/graph_seeker/Documents/WS/ComputerGraphics/ray_tracer/src/hit_record/hit_record.h \
  /home/graph_seeker/Documents/WS/ComputerGraphics/ray_tracer/src/surface_group/surface_group.h \
  /home/graph_seeker/Documents/WS/ComputerGraphics/ray_tracer/src/surface_group/../surface/surface.h \
  /home/graph_seeker/Documents/WS/ComputerGraphics/ray_tracer/src/surface_group/../ray/ray.h \
@@ -204,4 +201,11 @@ CMakeFiles/ray_tracer.dir/src/main.cpp.o: \
  /usr/include/c++/15.2.1/bits/uniform_int_dist.h \
  /usr/include/c++/15.2.1/bits/stl_tempbuf.h \
  /usr/include/c++/15.2.1/pstl/glue_algorithm_defs.h \
- /usr/include/c++/15.2.1/pstl/execution_defs.h
+ /usr/include/c++/15.2.1/pstl/execution_defs.h \
+ /home/graph_seeker/Documents/WS/ComputerGraphics/ray_tracer/src/renderer/renderer.h \
+ /home/graph_seeker/Documents/WS/ComputerGraphics/ray_tracer/src/renderer/../surface_group/surface_group.h \
+ /home/graph_seeker/Documents/WS/ComputerGraphics/ray_tracer/src/renderer/../hit_record/hit_record.h \
+ /home/graph_seeker/Documents/WS/ComputerGraphics/ray_tracer/src/renderer/../camera/camera.h \
+ /home/graph_seeker/Documents/WS/ComputerGraphics/ray_tracer/src/renderer/../image/image.h \
+ /home/graph_seeker/Documents/WS/ComputerGraphics/ray_tracer/src/renderer/../ray/ray.h \
+ /home/graph_seeker/Documents/WS/ComputerGraphics/ray_tracer/src/renderer/../rgb/rgb.h

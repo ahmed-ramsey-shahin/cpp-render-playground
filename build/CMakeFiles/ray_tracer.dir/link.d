@@ -12,6 +12,7 @@ ray_tracer: \
   CMakeFiles/ray_tracer.dir/src/sphere/sphere.cpp.o \
   CMakeFiles/ray_tracer.dir/src/camera/camera.cpp.o \
   CMakeFiles/ray_tracer.dir/src/surface_group/surface_group.cpp.o \
+  CMakeFiles/ray_tracer.dir/src/renderer/renderer.cpp.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libstdc++.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libm.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libm.so \
@@ -65,6 +66,8 @@ CMakeFiles/ray_tracer.dir/src/sphere/sphere.cpp.o:
 CMakeFiles/ray_tracer.dir/src/camera/camera.cpp.o:
 
 CMakeFiles/ray_tracer.dir/src/surface_group/surface_group.cpp.o:
+
+CMakeFiles/ray_tracer.dir/src/renderer/renderer.cpp.o:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/../../../../lib/libstdc++.so:
 
