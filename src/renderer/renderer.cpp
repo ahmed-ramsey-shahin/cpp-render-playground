@@ -25,7 +25,7 @@ rgb renderer::trace_ray(const ray* r, const surface_group& group) const {
     group.hit(r, record);
     rgb color(0, 0, 0);
     if (record->hit_point < std::numeric_limits<float>::max()) {
-        color = record->s->color;
+        color = record->s->mat->color;
     }
     delete record;
     return color;

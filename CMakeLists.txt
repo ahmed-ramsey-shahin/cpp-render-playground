@@ -4,6 +4,7 @@ project(abstraction)
 
 # Create the executable from the src
 add_executable(${PROJECT_NAME_VAR}
+    src/hit_record/hit_record.h
     src/main.cpp
     src/vector2/vector2.cpp
     src/vector3/vector3.cpp
@@ -15,5 +16,9 @@ add_executable(${PROJECT_NAME_VAR}
     src/camera/camera.cpp
     src/surface_group/surface_group.cpp
     src/renderer/renderer.cpp
-    src/hit_record/hit_record.h
+    src/light/light.cpp
+    src/material/material.cpp
+    src/point_light/point_light.cpp
+    src/ambient_light/ambient_light.cpp
+    src/scene/scene.cpp
 )

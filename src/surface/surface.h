@@ -3,14 +3,14 @@
 
 #include "../ray/ray.h"
 #include "../rgb/rgb.h"
-#include <limits>
-#include <cmath>
+#include "../material/material.h"
+#include "../vector3/vector3.h"
 
-class hit_record;
+struct hit_record;
 
 class surface {
 public:
-    rgb color;
+    material* mat;
     virtual void hit(const ray*, hit_record*&) const = 0;
     virtual ~surface() = default;
 };
