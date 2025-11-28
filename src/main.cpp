@@ -6,11 +6,21 @@
 #include "surface_group/surface_group.h"
 #include "renderer/renderer.h"
 #include "material/material.h"
+#include "ambient_light/ambient_light.h"
+#include "scene/scene.h"
 
 int main(int argc, char* argv[]) {
     float nx = 1420;
     float ny = 1080;
     image img(nx, ny); // create a new image of width nx, and height ny
+
+    // create the main scene
+    scene s;
+    s.color = rgb(64.0f/255.0f, 64.0f/255.0f, 64.0f/255.0f);
+
+    // create the ambient light
+    ambient_light al;
+    al.set_color(rgb(0.5, 0.5, 0.5));
 
     float h = 2;
     float w = nx / ny * h;
@@ -23,20 +33,11 @@ int main(int argc, char* argv[]) {
 
     // create a green material
     material* material1 = new material();
-    material1->color = rgb(0, 255, 0);
+    material1->color = rgb(0, 1, 0);
 
     // create a red material
     material* material2 = new material();
-    material2->color = rgb(255, 0, 0);
-
-    // create a grey material
-    material* material3 = new material();
-    material3->color = rgb(64, 64, 64);
-
-    // create the sphere which represents the world
-    sphere space(0, 0, 0, 100);
-    // set the sphere's material to material3
-    space.mat = material3;
+    material2->color = rgb(1, 0, 0);
 
     // create a simple ball
     sphere green_ball(-0.5, 0, 0, 0.5);
@@ -52,18 +53,23 @@ int main(int argc, char* argv[]) {
     surface_group group;
     group.add_object(&green_ball);
     group.add_object(&red_ball);
-    group.add_object(&space);
     // set the target of the camera to the green ball
     cam.set_target(green_ball.get_center());
+
     // create the renderer
     renderer r;
+
+    // add the main objects to the scene
+    s.cam = &cam;
+    s.group = &group;
+    s.lights.push_back(&al);
+
     // execute the render operation on the group, camera, and plot it on image img
-    r.render(group, cam, img);
+    r.render(s, cam, img);
 
     // free the materials from the heap
     delete material1;
     delete material2;
-    delete material3;
 
     // save the image
     img.save_ppm("test.ppm");
