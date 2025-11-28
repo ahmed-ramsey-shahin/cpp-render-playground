@@ -1,6 +1,6 @@
 #include "renderer.h"
 
-void renderer::render(const surface_group& scene, const camera& cam, image& img) const {
+void renderer::render(const scene& s, const camera& cam, image& img) const {
     float nx = img.get_width();
     float ny = img.get_height();
     float l = -cam.get_width() / 2;
@@ -13,19 +13,23 @@ void renderer::render(const surface_group& scene, const camera& cam, image& img)
             float u = l + (r - l) * (i + 0.5) / nx;
             float v = b + (t - b) * (1 - (j + 0.5) / ny);
             ray* r = cam.get_ray(u, v);
-            rgb pixel_color = trace_ray(r, scene);
+            rgb pixel_color = trace_ray(r, s);
             img.set_pixel_at(i, j, pixel_color);
             delete r;
         }
     }
 }
 
-rgb renderer::trace_ray(const ray* r, const surface_group& group) const {
+rgb renderer::trace_ray(const ray* r, const scene& s) const {
     hit_record* record = new hit_record();
-    group.hit(r, record);
+    s.group->hit(r, record);
     rgb color(0, 0, 0);
     if (record->hit_point < std::numeric_limits<float>::max()) {
-        color = record->s->mat->color;
+        for (const light* x : s.lights) {
+            color = color + x->illuminate(r, *record);
+        }
+    } else {
+        color = s.color;
     }
     delete record;
     return color;
