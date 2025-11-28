@@ -8,7 +8,7 @@ const rgb& ambient_light::get_color() const {
 }
 
 
-rgb ambient_light::illuminate(const ray& r, const hit_record& record) const {
+rgb ambient_light::illuminate(const ray* r, const hit_record& record) const {
     rgb color = record.s->mat->color;
     return rgb(
         this->color.get(0)*color[0],

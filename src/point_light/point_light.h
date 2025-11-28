@@ -12,7 +12,7 @@ private:
     rgb color;
     vector3 p;
 public:
-    rgb illuminate(const ray&, const hit_record&) const;
+    rgb illuminate(const ray*, const hit_record&) const;
     void set_position(const vector3&);
     const vector3& get_position() const;
     void set_color(const rgb&);

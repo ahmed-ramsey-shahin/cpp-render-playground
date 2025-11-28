@@ -7,7 +7,8 @@
 class material {
 public:
     rgb color;
-    rgb evaluate(const vector3&, const vector3&, const vector3&);
+    virtual rgb evaluate(const vector3&, const vector3&, const vector3&);
+    virtual ~material() = default;
 };
 
 #endif // _MATERIAL_H_

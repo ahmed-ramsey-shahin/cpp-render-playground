@@ -7,7 +7,8 @@
 
 class light {
 public:
-    rgb illuminate(const ray&, const hit_record&) const;
+    virtual rgb illuminate(const ray*, const hit_record&) const = 0;
+    virtual ~light() = default;
 };
 
 #endif // _LIGHT_H_

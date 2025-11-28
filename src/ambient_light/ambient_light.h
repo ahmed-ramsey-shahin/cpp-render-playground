@@ -9,7 +9,7 @@ class ambient_light : public light {
 private:
     rgb color;
 public:
-    rgb illuminate(const ray&, const hit_record&) const;
+    rgb illuminate(const ray*, const hit_record&) const;
     void set_color(const rgb&);
     const rgb& get_color() const;
 };
