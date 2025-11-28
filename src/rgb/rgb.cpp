@@ -1,6 +1,6 @@
 #include "rgb.h"
 
-rgb::rgb(const unsigned char x, const unsigned char y, const unsigned char z) {
+rgb::rgb(const float x, const float y, const float z) {
     xyz[0] = x;
     xyz[1] = y;
     xyz[2] = z;
@@ -12,7 +12,7 @@ rgb::rgb() {
     xyz[2] = 0;
 }
 
-unsigned char& rgb::operator[](const short& i) {
+float& rgb::operator[](const short& i) {
     return xyz[i];
 }
 
@@ -32,7 +32,7 @@ rgb rgb::operator-(const rgb& other) const {
     return result;
 }
 
-rgb rgb::operator*(const unsigned char& x) const {
+rgb rgb::operator*(const float& x) const {
     rgb result;
     result[0] = xyz[0] * x;
     result[1] = xyz[1] * x;
@@ -40,7 +40,7 @@ rgb rgb::operator*(const unsigned char& x) const {
     return result;
 }
 
-rgb rgb::operator/(const unsigned char& x) const {
+rgb rgb::operator/(const float& x) const {
     rgb result;
     result[0] = xyz[0] / x;
     result[1] = xyz[1] / x;
@@ -48,6 +48,6 @@ rgb rgb::operator/(const unsigned char& x) const {
     return result;
 }
 
-const unsigned char& rgb::get(const short& i) const {
+const float& rgb::get(const short& i) const {
     return xyz[i];
 }

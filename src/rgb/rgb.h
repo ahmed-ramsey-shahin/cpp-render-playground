@@ -3,16 +3,16 @@
 
 class rgb {
 private:
-    unsigned char xyz[3];
+    float xyz[3];
 public:
-    rgb(const unsigned char, const unsigned char, const unsigned char);
+    rgb(const float, const float, const float);
     rgb();
-    unsigned char& operator[](const short&);
+    float& operator[](const short&);
     rgb operator+(const rgb&) const;
     rgb operator-(const rgb&) const;
-    rgb operator*(const unsigned char&) const;
-    rgb operator/(const unsigned char&) const;
-    const unsigned char& get(const short&) const;
+    rgb operator*(const float&) const;
+    rgb operator/(const float&) const;
+    const float& get(const short&) const;
 };
 
 #endif // _RGB_H_
