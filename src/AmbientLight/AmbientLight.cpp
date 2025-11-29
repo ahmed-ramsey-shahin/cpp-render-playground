@@ -8,11 +8,6 @@ const RGB& AmbientLight::get_intensity() const {
 }
 
 
-RGB AmbientLight::illuminate(const Ray* r, const HitRecord& record) const {
-    RGB intensity = record.s->mat->color;
-    return RGB(
-        this->intensity.get(0)*intensity[0],
-        this->intensity.get(1)*intensity[1],
-        this->intensity.get(2)*intensity[2]
-    );
+RGB AmbientLight::illuminate(const HitRecord& record) const {
+    return intensity;
 }

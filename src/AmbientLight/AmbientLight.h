@@ -10,7 +10,7 @@ class AmbientLight : public Light {
 private:
     RGB intensity;
 public:
-    RGB illuminate(const Ray*, const HitRecord&) const;
+    RGB illuminate(const HitRecord&) const;
     void set_intensity(const RGB&);
     const RGB& get_intensity() const;
 };

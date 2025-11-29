@@ -10,9 +10,9 @@
 class PointLight : public Light {
 private:
     RGB intensity;
-    Vector3 p;
+    Vector3 position;
 public:
-    RGB illuminate(const Ray*, const HitRecord&) const;
+    RGB illuminate(const HitRecord&) const;
     void set_position(const Vector3&);
     const Vector3& get_position() const;
     void set_intensity(const RGB&);

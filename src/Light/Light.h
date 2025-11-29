@@ -7,7 +7,7 @@
 
 class Light {
 public:
-    virtual RGB illuminate(const Ray*, const HitRecord&) const = 0;
+    virtual RGB illuminate(const HitRecord&) const = 0;
     virtual ~Light() = default;
 };
 
