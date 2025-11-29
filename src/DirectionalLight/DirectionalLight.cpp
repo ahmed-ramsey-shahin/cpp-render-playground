@@ -16,7 +16,11 @@ void DirectionalLight::set_direction(const Vector3& direction) {
     this->direction = direction;
 }
 
-RGB DirectionalLight::illuminate(const HitRecord& record) const {
-    Vector3 light_direction = -direction;
-    return intensity * record.n.dot(light_direction);
+RGB DirectionalLight::illuminate(LightRecord& record) const {
+    record.light_direction = -direction;
+    return intensity * record.surface_normal.dot(record.light_direction);
+}
+
+Vector3 DirectionalLight::get_direction(const Vector3& x) const {
+    return direction;
 }

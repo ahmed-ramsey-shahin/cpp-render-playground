@@ -22,19 +22,32 @@ void SurfaceGroup::delete_object(const Surface* object) {
     }
 }
 
-void SurfaceGroup::hit(const Ray* r, HitRecord*& record) const {
+bool SurfaceGroup::hit(const Ray* r, HitRecord*& record) const {
     HitRecord* min_record = new HitRecord();
+    HitRecord* temp_record = new HitRecord();
     min_record->s = nullptr;
     min_record->hit_distance = std::numeric_limits<float>::max();
+    temp_record->hit_distance = std::numeric_limits<float>::max();
+
     for (auto object : objects) {
-        object->hit(r, record);
-        if (min_record->hit_distance > record->hit_distance) {
-            min_record->s = record->s;
-            min_record->hit_distance = record->hit_distance;
+        object->hit(r, temp_record);
+        if (min_record->hit_distance > temp_record->hit_distance) {
+            min_record->s = temp_record->s;
+            min_record->hit_distance = temp_record->hit_distance;
         }
     }
-    delete record;
-    record = min_record;
+
+    float hit_distance = min_record->hit_distance;
+
+    if (record != nullptr) {
+        delete record;
+        record = min_record;
+    } else {
+        delete min_record;
+    }
+
+    delete temp_record;
+    return hit_distance < std::numeric_limits<float>::max();
 }
 
 void SurfaceGroup::get_normal(HitRecord*& record) const {

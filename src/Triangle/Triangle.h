@@ -22,7 +22,7 @@ public:
     const Vector3& get_a() const;
     const Vector3& get_b() const;
     const Vector3& get_c() const;
-    void hit(const Ray*, HitRecord*&) const;
+    bool hit(const Ray*, HitRecord*&) const;
     void get_normal(HitRecord*&) const;
 };
 

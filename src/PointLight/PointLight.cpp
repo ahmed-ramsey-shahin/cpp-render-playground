@@ -1,8 +1,9 @@
 #include "PointLight.h"
 
-RGB PointLight::illuminate(const HitRecord& record) const {
-    Vector3 light_direction = position - record.hit_point;
-    return intensity * record.n.dot(light_direction) / std::pow(record.hit_distance, 2);
+RGB PointLight::illuminate(LightRecord& record) const {
+    record.light_direction = position - record.hit_point;
+    record.light_distance = (position - record.hit_point).magnitude();
+    return intensity * record.surface_normal.dot(record.light_direction) / std::pow(record.light_distance, 2);
 }
 
 void PointLight::set_position(const Vector3& position) {
@@ -17,4 +18,8 @@ void PointLight::set_intensity(const RGB& intensity) {
 }
 const RGB& PointLight::get_intensity() const {
     return this->intensity;
+}
+
+Vector3 PointLight::get_direction(const Vector3& x) const {
+    return position - x;
 }

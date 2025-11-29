@@ -42,8 +42,9 @@ const Vector3& Triangle::get_c() const {
     return c;
 }
 
-void Triangle::hit(const Ray* r, HitRecord*& record) const {
-    record->s = this;
+bool Triangle::hit(const Ray* r, HitRecord*& record) const {
+    if (record != nullptr)
+        record->s = this;
     const Vector3 direction = r->get_direction();
     const Vector3 eye = r->get_origin();
     float a = this->a.get(0) - this->b.get(0);
@@ -64,28 +65,34 @@ void Triangle::hit(const Ray* r, HitRecord*& record) const {
     float t = f*(a*k - j*b) + e*(j*c - a*l) + d*(b*l - k*c);
     t = -t/m;
     if (t < 0 || t >= std::numeric_limits<float>::max() || std::isnan(t)) {
-        record->hit_distance = std::numeric_limits<float>::max();
-        return;
+        if (record != nullptr)
+            record->hit_distance = std::numeric_limits<float>::max();
+        return false;
     }
 
     // compute gamma
     float gamma = i*(a*k - j*b) + h*(j*c - a*l) + g*(b*l - k*c);
     gamma = gamma/m;
     if (gamma < 0 || gamma > 1) {
-        record->hit_distance = std::numeric_limits<float>::max();
-        return;
+        if (record != nullptr)
+            record->hit_distance = std::numeric_limits<float>::max();
+        return false;
     }
 
     // compute beta
     float beta = j*(e*i - h*f) + k*(g*f - d*i) + l*(d*h - e*g);
     beta = beta / m;
     if (beta < 0 || beta > 1 - gamma) {
-        record->hit_distance = std::numeric_limits<float>::max();
-        return;
+        if (record != nullptr)
+            record->hit_distance = std::numeric_limits<float>::max();
+        return false;
     }
 
-    record->hit_distance = t;
-    record->hit_point = r->evaluate(t);
+    if (record != nullptr) {
+        record->hit_distance = t;
+        record->hit_point = r->evaluate(t);
+    }
+    return true;
 }
 
 void Triangle::get_normal(HitRecord*& record) const {

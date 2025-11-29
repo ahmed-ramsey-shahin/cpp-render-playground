@@ -22,7 +22,7 @@ int main(int argc, char* argv[]) {
 
     // create the ambient light
     AmbientLight al;
-    float ambient_light_intensity = 0.8;
+    float ambient_light_intensity = 0.5;
     al.set_intensity(RGB(ambient_light_intensity, ambient_light_intensity, ambient_light_intensity));
 
     float h = 2;

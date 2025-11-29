@@ -20,7 +20,7 @@ public:
     const Vector3& get_center() const;
     float get_radius() const;
     void set_radius(const float&);
-    void hit(const Ray*, HitRecord*&) const;
+    bool hit(const Ray*, HitRecord*&) const;
     void get_normal(HitRecord*&) const;
 };
 

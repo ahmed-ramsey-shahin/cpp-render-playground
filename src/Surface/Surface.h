@@ -11,7 +11,7 @@ struct HitRecord;
 class Surface {
 public:
     Material* mat;
-    virtual void hit(const Ray*, HitRecord*&) const = 0;
+    virtual bool hit(const Ray*, HitRecord*&) const = 0;
     virtual void get_normal(HitRecord*&) const = 0;
     virtual ~Surface() = default;
 };

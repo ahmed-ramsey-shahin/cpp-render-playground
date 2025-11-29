@@ -3,6 +3,7 @@
 
 #include "../Light/Light.h"
 #include "../RGB/RGB.h"
+#include "../LightRecord/LightRecord.h"
 #include "../Vector3/Vector3.h"
 
 class DirectionalLight : public Light {
@@ -14,7 +15,8 @@ public:
     void set_intensity(const RGB&);
     const Vector3& get_direction() const;
     void set_direction(const Vector3&);
-    RGB illuminate(const HitRecord&) const;
+    RGB illuminate(LightRecord&) const;
+    Vector3 get_direction(const Vector3&) const;
 };
 
 #endif // _DIRECTIONAL_LIGHT_H_

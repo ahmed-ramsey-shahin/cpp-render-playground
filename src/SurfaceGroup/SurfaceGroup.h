@@ -17,7 +17,7 @@ public:
     int get_no_objects() const;
     void add_object(const Surface*);
     void delete_object(const Surface*);
-    void hit(const Ray*, HitRecord*&) const;
+    bool hit(const Ray*, HitRecord*&) const;
     void get_normal(HitRecord*&) const;
 };
 

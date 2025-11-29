@@ -8,8 +8,6 @@
 #include <cmath>
 
 class IdealDiffuseMaterial : public Material {
-private:
-    RGB reflectance;
 public:
     RGB evaluate(const Vector3&, const Vector3&, const Vector3&) const;
 };

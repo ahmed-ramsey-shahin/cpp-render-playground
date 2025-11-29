@@ -25,13 +25,39 @@ RGB Renderer::trace_ray(const Ray* r, const Scene& s) const {
     s.group->hit(r, record);
     RGB color(0, 0, 0);
     if (record->hit_distance < std::numeric_limits<float>::max()) {
-        record->s->get_normal(record);
         for (const Light* light : s.lights) {
-            color = record->s->mat->color;
+            LightRecord* light_record = trace_light(s.group, light, record);
+            if (light_record != nullptr) {
+                light_record->view_direction = -r->get_direction();
+                RGB intensity = light->illuminate(*light_record);
+                RGB brdf = record->s->mat->evaluate(
+                    light_record->light_direction,
+                    light_record->surface_normal,
+                    light_record->view_direction
+                );
+                color = color + intensity * brdf;
+            }
+            delete light_record;
         }
     } else {
         color = s.color;
     }
     delete record;
     return color;
+}
+
+LightRecord* Renderer::trace_light(const SurfaceGroup* group, const Light* light, const HitRecord* record) const {
+    Vector3 light_direction = light->get_direction(record->hit_point);
+    Ray ray(
+        record->hit_point + record->n * std::pow(10, -4),
+        light_direction
+    );
+    LightRecord* light_record = new LightRecord();
+    HitRecord* empty_record = nullptr;
+    if (!group->hit(&ray, empty_record)) {
+        light_record->surface_normal = record->n;
+        light_record->hit_point = record->hit_point;
+        return light_record;
+    }
+    return nullptr;
 }

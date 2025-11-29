@@ -5,6 +5,7 @@ project(abstraction)
 # Create the executable from the src
 add_executable(${PROJECT_NAME_VAR}
     src/HitRecord/HitRecord.h
+    src/LightRecord/LightRecord.h
     src/main.cpp
     src/AmbientLight/AmbientLight.cpp
     src/Camera/Camera.cpp

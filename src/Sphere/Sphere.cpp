@@ -34,8 +34,9 @@ void Sphere::set_radius(const float& radius) {
     this->radius = radius;
 }
 
-void Sphere::hit(const Ray* r, HitRecord*& record) const {
-    record->s = this;
+bool Sphere::hit(const Ray* r, HitRecord*& record) const {
+    if (record != nullptr)
+        record->s = this;
     const Vector3 d = r->get_direction();
     const Vector3 e = r->get_origin();
     float discriminant = std::pow(d.dot(e - center), 2) - (d.dot(d)) * ((e - center).dot(e - center) - std::pow(radius, 2));
@@ -48,13 +49,21 @@ void Sphere::hit(const Ray* r, HitRecord*& record) const {
         t1 = (-d.dot(e - center) - std::sqrt(discriminant)) / d.dot(d);
     }
     if (t1 > 0) {
-        record->hit_distance = t1;
-        record->hit_point = r->evaluate(t1);
+        if (record != nullptr) {
+            record->hit_distance = t1;
+            record->hit_point = r->evaluate(t1);
+        }
+        return true;
     } else if (t0 > 0) {
-        record->hit_distance = t0;
-        record->hit_point = r->evaluate(t0);
+        if (record != nullptr) {
+            record->hit_distance = t0;
+            record->hit_point = r->evaluate(t0);
+        }
+        return true;
     } else {
-        record->hit_distance = std::numeric_limits<float>::max();
+        if (record != nullptr)
+            record->hit_distance = std::numeric_limits<float>::max();
+        return false;
     }
 }
 
