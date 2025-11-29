@@ -18,6 +18,7 @@ public:
     void add_object(const surface*);
     void delete_object(const surface*);
     void hit(const ray*, hit_record*&) const;
+    void get_normal(hit_record*&) const;
 };
 
 #endif // _SURFACE_GROUP_H_

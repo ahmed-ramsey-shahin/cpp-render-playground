@@ -7,7 +7,8 @@ class surface;
 
 struct hit_record {
     const surface* s;
-    float hit_point;
+    float hit_distance;
+    vector3 hit_point;
     vector3 n;
 };
 

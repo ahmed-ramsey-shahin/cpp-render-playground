@@ -23,6 +23,7 @@ public:
     const vector3& get_b() const;
     const vector3& get_c() const;
     void hit(const ray*, hit_record*&) const;
+    void get_normal(hit_record*&) const;
 };
 
 #endif // _TRIANGLE_H_

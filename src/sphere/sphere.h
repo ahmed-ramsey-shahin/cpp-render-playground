@@ -21,6 +21,7 @@ public:
     float get_radius() const;
     void set_radius(const float&);
     void hit(const ray*, hit_record*&) const;
+    void get_normal(hit_record*&) const;
 };
 
 #endif // _SPHERE_H_

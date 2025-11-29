@@ -22,7 +22,8 @@ int main(int argc, char* argv[]) {
 
     // create the ambient light
     ambient_light al;
-    al.set_color(rgb(0.5, 1, 0));
+    float ambient_light_intensity = 0.8;
+    al.set_color(rgb(ambient_light_intensity, ambient_light_intensity, ambient_light_intensity));
 
     float h = 2;
     float w = nx / ny * h;
@@ -39,7 +40,7 @@ int main(int argc, char* argv[]) {
 
     // create a red material
     material* material2 = new material();
-    material2->color = rgb(1, 0, 0);
+    material2->color = rgb(1, 1, 1);
 
     // create a simple ball
     sphere green_ball(-0.5, 0, 0, 0.5);
@@ -47,16 +48,16 @@ int main(int argc, char* argv[]) {
     green_ball.mat = material1;
 
     // create another ball
-    triangle red_triangle;
-    red_triangle.set_a(vector3(0.0f, 0.0f, -1.0f));
-    red_triangle.set_b(vector3(1.0f, 0.0f, -1.0f));
-    red_triangle.set_c(vector3(0.0f, 1.0f, -1.0f)); // set the ball's material
-    red_triangle.mat = material2;
+    triangle ground_plane;
+    ground_plane.set_a(vector3(-1000.0f, 0.0f, 1000.0f));
+    ground_plane.set_b(vector3(1000.0f, 0.0f, 1000.0f));
+    ground_plane.set_c(vector3(-1000.0f, 0.0f, -1000.0f)); // set the ball's material
+    ground_plane.mat = material2;
 
     // create a group of surfaces and add all the balls and the sphere to it
     surface_group group;
     group.add_object(&green_ball);
-    group.add_object(&red_triangle);
+    group.add_object(&ground_plane);
     // set the target of the camera to the green ball
     cam.set_target(green_ball.get_center());
 

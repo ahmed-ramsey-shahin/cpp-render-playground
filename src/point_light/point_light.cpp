@@ -1,7 +1,7 @@
 #include "point_light.h"
 
 rgb point_light::illuminate(const ray* r, const hit_record& record) const {
-    vector3 x = r->evaluate(record.hit_point);
+    vector3 x = r->evaluate(record.hit_distance);
     float rr = (p - x).magnitude();
     vector3 l = (p - x) / rr;
     vector3 n = record.n;

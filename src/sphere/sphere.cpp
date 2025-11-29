@@ -48,14 +48,21 @@ void sphere::hit(const ray* r, hit_record*& record) const {
         t1 = (-d.dot(e - center) - std::sqrt(discriminant)) / d.dot(d);
     }
     if (t1 > 0) {
-        record->hit_point = t1;
+        record->hit_distance = t1;
+        record->hit_point = r->evaluate(t1);
     } else if (t0 > 0) {
-        record->hit_point = t0;
+        record->hit_distance = t0;
+        record->hit_point = r->evaluate(t0);
     } else {
-        record->hit_point = std::numeric_limits<float>::max();
+        record->hit_distance = std::numeric_limits<float>::max();
     }
 }
 
 const vector3& sphere::get_center() const {
     return center;
+}
+
+void sphere::get_normal(hit_record*& record) const {
+    record->n = record->hit_point - center;
+    record->n = record->n / record->n.magnitude();
 }

@@ -64,24 +64,30 @@ void triangle::hit(const ray* r, hit_record*& record) const {
     float t = f*(a*k - j*b) + e*(j*c - a*l) + d*(b*l - k*c);
     t = -t/m;
     if (t < 0 || t >= std::numeric_limits<float>::max() || std::isnan(t)) {
-        record->hit_point = std::numeric_limits<float>::max();
+        record->hit_distance = std::numeric_limits<float>::max();
         return;
     }
 
     // compute gamma
     float gamma = i*(a*k - j*b) + h*(j*c - a*l) + g*(b*l - k*c);
-    gamma = -gamma/m;
+    gamma = gamma/m;
     if (gamma < 0 || gamma > 1) {
-        record->hit_point = std::numeric_limits<float>::max();
+        record->hit_distance = std::numeric_limits<float>::max();
         return;
     }
 
     // compute beta
     float beta = j*(e*i - h*f) + k*(g*f - d*i) + l*(d*h - e*g);
+    beta = beta / m;
     if (beta < 0 || beta > 1 - gamma) {
-        record->hit_point = std::numeric_limits<float>::max();
+        record->hit_distance = std::numeric_limits<float>::max();
         return;
     }
 
-    record->hit_point = 1;
+    record->hit_distance = t;
+    record->hit_point = r->evaluate(t);
+}
+
+void triangle::get_normal(hit_record*& record) const {
+    record->n = (b - a).cross(c - a);
 }

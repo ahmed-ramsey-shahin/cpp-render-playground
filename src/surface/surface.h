@@ -12,6 +12,7 @@ class surface {
 public:
     material* mat;
     virtual void hit(const ray*, hit_record*&) const = 0;
+    virtual void get_normal(hit_record*&) const = 0;
     virtual ~surface() = default;
 };
 

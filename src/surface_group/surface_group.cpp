@@ -25,14 +25,18 @@ void surface_group::delete_object(const surface* object) {
 void surface_group::hit(const ray* r, hit_record*& record) const {
     hit_record* min_record = new hit_record();
     min_record->s = nullptr;
-    min_record->hit_point = std::numeric_limits<float>::max();
+    min_record->hit_distance = std::numeric_limits<float>::max();
     for (auto object : objects) {
         object->hit(r, record);
-        if (min_record->hit_point > record->hit_point) {
+        if (min_record->hit_distance > record->hit_distance) {
             min_record->s = record->s;
-            min_record->hit_point = record->hit_point;
+            min_record->hit_distance = record->hit_distance;
         }
     }
     delete record;
     record = min_record;
+}
+
+void surface_group::get_normal(hit_record*& record) const {
+    record->s->get_normal(record);
 }
