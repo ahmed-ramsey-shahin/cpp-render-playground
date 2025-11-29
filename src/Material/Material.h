@@ -7,7 +7,7 @@
 class Material {
 public:
     RGB color;
-    virtual RGB evaluate(const Vector3&, const Vector3&, const Vector3&);
+    virtual RGB evaluate(const Vector3&, const Vector3&, const Vector3&) const = 0;
     virtual ~Material() = default;
 };
 

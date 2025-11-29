@@ -5,7 +5,7 @@
 #include "RGB/RGB.h"
 #include "SurfaceGroup/SurfaceGroup.h"
 #include "Renderer/Renderer.h"
-#include "Material/Material.h"
+#include "IdealDiffuseMaterial/IdealDiffuseMaterial.h"
 #include "AmbientLight/AmbientLight.h"
 #include "Scene/Scene.h"
 #include "Triangle/Triangle.h"
@@ -35,11 +35,11 @@ int main(int argc, char* argv[]) {
     cam.set_type(OBLIQUE);
 
     // create a green material
-    Material* material1 = new Material();
+    IdealDiffuseMaterial* material1 = new IdealDiffuseMaterial();
     material1->color = RGB(0, 1, 0);
 
     // create a red material
-    Material* material2 = new Material();
+    IdealDiffuseMaterial* material2 = new IdealDiffuseMaterial();
     material2->color = RGB(1, 1, 1);
 
     // create a simple ball
