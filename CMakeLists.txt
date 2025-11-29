@@ -21,4 +21,5 @@ add_executable(${PROJECT_NAME_VAR}
     src/point_light/point_light.cpp
     src/ambient_light/ambient_light.cpp
     src/scene/scene.cpp
+    src/triangle/triangle.cpp
 )

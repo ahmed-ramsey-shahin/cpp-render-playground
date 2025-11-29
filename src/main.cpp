@@ -8,11 +8,13 @@
 #include "material/material.h"
 #include "ambient_light/ambient_light.h"
 #include "scene/scene.h"
+#include "triangle/triangle.h"
 
 int main(int argc, char* argv[]) {
     float nx = 1420;
     float ny = 1080;
-    image img(nx, ny); // create a new image of width nx, and height ny
+    // create a new image of width nx, and height ny
+    image img(nx, ny);
 
     // create the main scene
     scene s;
@@ -20,7 +22,7 @@ int main(int argc, char* argv[]) {
 
     // create the ambient light
     ambient_light al;
-    al.set_color(rgb(0.5, 0.5, 0.5));
+    al.set_color(rgb(0.5, 1, 0));
 
     float h = 2;
     float w = nx / ny * h;
@@ -45,14 +47,16 @@ int main(int argc, char* argv[]) {
     green_ball.mat = material1;
 
     // create another ball
-    sphere red_ball(-0.75, 0, 1.25, 0.5);
-    // set the ball's material
-    red_ball.mat = material2;
+    triangle red_triangle;
+    red_triangle.set_a(vector3(0.0f, 0.0f, -1.0f));
+    red_triangle.set_b(vector3(1.0f, 0.0f, -1.0f));
+    red_triangle.set_c(vector3(0.0f, 1.0f, -1.0f)); // set the ball's material
+    red_triangle.mat = material2;
 
     // create a group of surfaces and add all the balls and the sphere to it
     surface_group group;
     group.add_object(&green_ball);
-    group.add_object(&red_ball);
+    group.add_object(&red_triangle);
     // set the target of the camera to the green ball
     cam.set_target(green_ball.get_center());
 
