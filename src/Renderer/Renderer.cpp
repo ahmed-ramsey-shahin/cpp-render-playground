@@ -53,11 +53,12 @@ LightRecord* Renderer::trace_light(const SurfaceGroup* group, const Light* light
         light_direction
     );
     LightRecord* light_record = new LightRecord();
+    light_record->surface_normal = record->n;
+    light_record->hit_point = record->hit_point;
     HitRecord* empty_record = nullptr;
     if (!group->hit(&ray, empty_record)) {
-        light_record->surface_normal = record->n;
-        light_record->hit_point = record->hit_point;
         return light_record;
     }
+    delete light_record;
     return nullptr;
 }

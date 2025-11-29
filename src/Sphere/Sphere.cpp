@@ -48,16 +48,18 @@ bool Sphere::hit(const Ray* r, HitRecord*& record) const {
         t0 = (-d.dot(e - center) + std::sqrt(discriminant)) / d.dot(d);
         t1 = (-d.dot(e - center) - std::sqrt(discriminant)) / d.dot(d);
     }
-    if (t1 > 0) {
+    if (t1 > 0 && t1 < std::numeric_limits<float>::max()) {
         if (record != nullptr) {
             record->hit_distance = t1;
             record->hit_point = r->evaluate(t1);
+            get_normal(record);
         }
         return true;
-    } else if (t0 > 0) {
+    } else if (t0 > 0 && t1 < std::numeric_limits<float>::max()) {
         if (record != nullptr) {
             record->hit_distance = t0;
             record->hit_point = r->evaluate(t0);
+            get_normal(record);
         }
         return true;
     } else {

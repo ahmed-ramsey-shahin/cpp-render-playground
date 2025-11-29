@@ -2,8 +2,9 @@
 
 RGB PointLight::illuminate(LightRecord& record) const {
     record.light_direction = position - record.hit_point;
-    record.light_distance = (position - record.hit_point).magnitude();
-    return intensity * record.surface_normal.dot(record.light_direction) / std::pow(record.light_distance, 2);
+    record.light_distance = record.light_direction.magnitude();
+    record.light_direction = record.light_direction / record.light_distance;
+    return intensity * std::max(0.0f, record.surface_normal.dot(record.light_direction)) / std::pow(record.light_distance, 2);
 }
 
 void PointLight::set_position(const Vector3& position) {
@@ -21,5 +22,5 @@ const RGB& PointLight::get_intensity() const {
 }
 
 Vector3 PointLight::get_direction(const Vector3& x) const {
-    return position - x;
+    return (position - x) / (position - x).magnitude();
 }

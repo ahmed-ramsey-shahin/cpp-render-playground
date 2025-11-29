@@ -1,4 +1,6 @@
 #include "Triangle.h"
+#include <iostream>
+using namespace std;
 
 Triangle::Triangle() {
     a = Vector3();
@@ -91,10 +93,12 @@ bool Triangle::hit(const Ray* r, HitRecord*& record) const {
     if (record != nullptr) {
         record->hit_distance = t;
         record->hit_point = r->evaluate(t);
+        get_normal(record);
     }
     return true;
 }
 
 void Triangle::get_normal(HitRecord*& record) const {
     record->n = (b - a).cross(c - a);
+    record->n = record->n / record->n.magnitude();
 }

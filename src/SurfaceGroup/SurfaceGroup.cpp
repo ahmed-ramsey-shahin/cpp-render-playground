@@ -32,8 +32,7 @@ bool SurfaceGroup::hit(const Ray* r, HitRecord*& record) const {
     for (auto object : objects) {
         object->hit(r, temp_record);
         if (min_record->hit_distance > temp_record->hit_distance) {
-            min_record->s = temp_record->s;
-            min_record->hit_distance = temp_record->hit_distance;
+            min_record->copy_from(temp_record);
         }
     }
 

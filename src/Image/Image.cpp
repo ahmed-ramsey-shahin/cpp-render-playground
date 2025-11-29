@@ -42,11 +42,11 @@ void Image::save_ppm(const std::string& file_path) const {
     if (!ofs) return;
     ofs << "P6\n" << width << ' ' << height << "\n" << "255\n";
     for (const RGB& pixel : pixels) {
-        char r = pixel.get(0) * 255;
-        char g = pixel.get(1) * 255;
-        char b = pixel.get(2) * 255;
-        ofs.put(static_cast<char>(r));
-        ofs.put(static_cast<char>(g));
-        ofs.put(static_cast<char>(b));
+        float r = std::min(pixel.get(0) * 255, 255.0f);
+        float g = std::min(pixel.get(1) * 255, 255.0f);
+        float b = std::min(pixel.get(2) * 255, 255.0f);
+        ofs.put(static_cast<unsigned char>(r));
+        ofs.put(static_cast<unsigned char>(g));
+        ofs.put(static_cast<unsigned char>(b));
     }
 }
