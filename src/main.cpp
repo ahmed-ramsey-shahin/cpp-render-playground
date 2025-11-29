@@ -1,75 +1,75 @@
-#include "sphere/sphere.h"
-#include "camera/camera.h"
-#include "vector3/vector3.h"
-#include "image/image.h"
-#include "rgb/rgb.h"
-#include "surface_group/surface_group.h"
-#include "renderer/renderer.h"
-#include "material/material.h"
-#include "ambient_light/ambient_light.h"
-#include "scene/scene.h"
-#include "triangle/triangle.h"
+#include "Sphere/Sphere.h"
+#include "Camera/Camera.h"
+#include "Vector3/Vector3.h"
+#include "Image/Image.h"
+#include "RGB/RGB.h"
+#include "SurfaceGroup/SurfaceGroup.h"
+#include "Renderer/Renderer.h"
+#include "Material/Material.h"
+#include "AmbientLight/AmbientLight.h"
+#include "Scene/Scene.h"
+#include "Triangle/Triangle.h"
 
 int main(int argc, char* argv[]) {
     float nx = 1420;
     float ny = 1080;
     // create a new image of width nx, and height ny
-    image img(nx, ny);
+    Image img(nx, ny);
 
     // create the main scene
-    scene s;
-    s.color = rgb(64.0f/255.0f, 64.0f/255.0f, 64.0f/255.0f);
+    Scene s;
+    s.color = RGB(64.0f/255.0f, 64.0f/255.0f, 64.0f/255.0f);
 
     // create the ambient light
-    ambient_light al;
+    AmbientLight al;
     float ambient_light_intensity = 0.8;
-    al.set_color(rgb(ambient_light_intensity, ambient_light_intensity, ambient_light_intensity));
+    al.set_intensity(RGB(ambient_light_intensity, ambient_light_intensity, ambient_light_intensity));
 
     float h = 2;
     float w = nx / ny * h;
     float focal_length = 1;
-    vector3 camera_origin(0, 2, 0);
+    Vector3 camera_origin(0, 2, 0);
     // create a camera with focal_length=1, viewport width=w, viewport height=h
     // and at origin camera_origin
-    camera cam(focal_length, w, h, camera_origin, vector3(0, 0, 0));
+    Camera cam(focal_length, w, h, camera_origin, Vector3(0, 0, 0));
     cam.set_type(OBLIQUE);
 
     // create a green material
-    material* material1 = new material();
-    material1->color = rgb(0, 1, 0);
+    Material* material1 = new Material();
+    material1->color = RGB(0, 1, 0);
 
     // create a red material
-    material* material2 = new material();
-    material2->color = rgb(1, 1, 1);
+    Material* material2 = new Material();
+    material2->color = RGB(1, 1, 1);
 
     // create a simple ball
-    sphere green_ball(-0.5, 0, 0, 0.5);
+    Sphere green_ball(-0.5, 0, 0, 0.5);
     // set the ball's material
     green_ball.mat = material1;
 
     // create another ball
-    triangle ground_plane;
-    ground_plane.set_a(vector3(-1000.0f, 0.0f, 1000.0f));
-    ground_plane.set_b(vector3(1000.0f, 0.0f, 1000.0f));
-    ground_plane.set_c(vector3(-1000.0f, 0.0f, -1000.0f)); // set the ball's material
+    Triangle ground_plane;
+    ground_plane.set_a(Vector3(-1000.0f, 0.0f, 1000.0f));
+    ground_plane.set_b(Vector3(1000.0f, 0.0f, 1000.0f));
+    ground_plane.set_c(Vector3(-1000.0f, 0.0f, -1000.0f)); // set the ball's material
     ground_plane.mat = material2;
 
     // create a group of surfaces and add all the balls and the sphere to it
-    surface_group group;
+    SurfaceGroup group;
     group.add_object(&green_ball);
     group.add_object(&ground_plane);
-    // set the target of the camera to the green ball
+    // set the target of the Camera to the green ball
     cam.set_target(green_ball.get_center());
 
     // create the renderer
-    renderer r;
+    Renderer r;
 
     // add the main objects to the scene
     s.cam = &cam;
     s.group = &group;
     s.lights.push_back(&al);
 
-    // execute the render operation on the group, camera, and plot it on image img
+    // execute the render operation on the group, Camera, and plot it on image img
     r.render(s, cam, img);
 
     // free the materials from the heap

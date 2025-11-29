@@ -4,22 +4,22 @@ project(abstraction)
 
 # Create the executable from the src
 add_executable(${PROJECT_NAME_VAR}
-    src/hit_record/hit_record.h
+    src/HitRecord/HitRecord.h
     src/main.cpp
-    src/vector2/vector2.cpp
-    src/vector3/vector3.cpp
-    src/rgb/rgb.cpp
-    src/image/image.cpp
-    src/ray/ray.cpp
-    src/surface/surface.cpp
-    src/sphere/sphere.cpp
-    src/camera/camera.cpp
-    src/surface_group/surface_group.cpp
-    src/renderer/renderer.cpp
-    src/light/light.cpp
-    src/material/material.cpp
-    src/point_light/point_light.cpp
-    src/ambient_light/ambient_light.cpp
-    src/scene/scene.cpp
-    src/triangle/triangle.cpp
+    src/AmbientLight/AmbientLight.cpp
+    src/Camera/Camera.cpp
+    src/Image/Image.cpp
+    src/Light/Light.cpp
+    src/Material/Material.cpp
+    src/PointLight/PointLight.cpp
+    src/Ray/Ray.cpp
+    src/Renderer/Renderer.cpp
+    src/RGB/RGB.cpp
+    src/Scene/Scene.cpp
+    src/Sphere/Sphere.cpp
+    src/Surface/Surface.cpp
+    src/SurfaceGroup/SurfaceGroup.cpp
+    src/Triangle/Triangle.cpp
+    src/Vector2/Vector2.cpp
+    src/Vector3/Vector3.cpp
 )
