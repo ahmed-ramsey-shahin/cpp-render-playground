@@ -27,7 +27,7 @@ RGB Renderer::trace_ray(const Ray* r, const Scene& s) const {
     if (record->hit_distance < std::numeric_limits<float>::max()) {
         record->s->get_normal(record);
         for (const Light* light : s.lights) {
-            color = color + light->illuminate(*record) * record->s->mat->color;
+            color = record->s->mat->color;
         }
     } else {
         color = s.color;
