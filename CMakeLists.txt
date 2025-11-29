@@ -24,4 +24,5 @@ add_executable(${PROJECT_NAME_VAR}
     src/Vector2/Vector2.cpp
     src/Vector3/Vector3.cpp
     src/IdealDiffuseMaterial/IdealDiffuseMaterial.cpp
+    src/SpecularMaterial/SpecularMaterial.cpp
 )
