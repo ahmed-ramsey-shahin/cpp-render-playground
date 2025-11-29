@@ -40,6 +40,14 @@ RGB RGB::operator*(const float& x) const {
     return result;
 }
 
+RGB RGB::operator*(const RGB& x) const {
+    RGB result;
+    result[0] = xyz[0] * x.get(0);
+    result[1] = xyz[1] * x.get(1);
+    result[2] = xyz[2] * x.get(2);
+    return result;
+}
+
 RGB RGB::operator/(const float& x) const {
     RGB result;
     result[0] = xyz[0] / x;

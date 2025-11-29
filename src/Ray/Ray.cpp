@@ -1,33 +1,33 @@
 #include "Ray.h"
 
 Ray::Ray() {
-    o = Vector3();
-    d = Vector3();
+    origin = Vector3();
+    direction = Vector3();
 }
 
 Ray::Ray(const Vector3& origin, const Vector3& direction) {
-    o = origin;
-    d = direction;
+    this->origin = origin;
+    this->direction = direction;
 }
 
 Vector3 Ray::evaluate(const float& t) const {
     Vector3 result;
-    result = o + (d * t);
+    result = origin + (direction * t);
     return result;
 }
 
 const Vector3& Ray::get_origin() const {
-    return o;
+    return origin;
 }
 
 const Vector3& Ray::get_direction() const {
-    return d;
+    return direction;
 }
 
 void Ray::set_origin(const Vector3& origin) {
-    o = origin;
+    this->origin = origin;
 }
 
 void Ray::set_direction(const Vector3& direction) {
-    d = direction;
+    this->direction = direction;
 }

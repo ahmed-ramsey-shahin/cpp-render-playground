@@ -11,6 +11,7 @@ public:
     RGB operator+(const RGB&) const;
     RGB operator-(const RGB&) const;
     RGB operator*(const float&) const;
+    RGB operator*(const RGB&) const;
     RGB operator/(const float&) const;
     const float& get(const short&) const;
 };
