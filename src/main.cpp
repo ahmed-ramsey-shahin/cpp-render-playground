@@ -41,6 +41,7 @@ int main(int argc, char* argv[]) {
     dl.set_intensity(RGB(0.5f, 0.5f, 0.4f)); 
     s.lights.push_back(&dl);
 
+    // Camera
     float h = 2;
     float w = nx / ny * h;
     float focal_length = 1;

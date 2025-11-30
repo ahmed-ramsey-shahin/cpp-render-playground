@@ -30,5 +30,5 @@ RGB DirectionalLight::illuminate(LightRecord& record) const {
 }
 
 Vector3 DirectionalLight::get_direction(const Vector3& x) const {
-    return direction;
+    return -direction;
 }
