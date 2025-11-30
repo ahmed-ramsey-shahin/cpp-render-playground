@@ -1,5 +1,13 @@
 #include "DirectionalLight.h"
 
+DirectionalLight::DirectionalLight() {
+    direction = Vector3();
+}
+
+DirectionalLight::DirectionalLight(const Vector3& direction) {
+    this->direction = direction;
+}
+
 const RGB& DirectionalLight::get_intensity() const {
     return intensity;
 }

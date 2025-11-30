@@ -10,6 +10,7 @@
 #include "Triangle/Triangle.h"
 #include "PointLight/PointLight.h"
 #include "SpecularMaterial/SpecularMaterial.h"
+#include "DirectionalLight/DirectionalLight.h"
 
 int main(int argc, char* argv[]) {
     float nx = 1420;
@@ -19,16 +20,26 @@ int main(int argc, char* argv[]) {
     Scene s;
     s.color = RGB(0.4f, 0.6f, 0.9f);
 
+    // Ambient light
     AmbientLight al;
     float ambient_light_intensity = 0.6f;
     al.set_intensity(RGB(ambient_light_intensity, ambient_light_intensity, ambient_light_intensity));
     s.lights.push_back(&al);
 
+    // Point light
     PointLight pl;
     float pl_intensity = 1.0f;
     pl.set_intensity(RGB(pl_intensity, pl_intensity, pl_intensity));
     pl.set_position(Vector3(-1.0f, 2.0f, 1.0f));
     s.lights.push_back(&pl);
+
+    // Directional light
+    DirectionalLight dl;
+    Vector3 sun_direction(1.0f, -1.0f, -0.5f);
+    sun_direction = sun_direction / sun_direction.magnitude();
+    dl.set_direction(sun_direction);
+    dl.set_intensity(RGB(0.5f, 0.5f, 0.4f)); 
+    s.lights.push_back(&dl);
 
     float h = 2;
     float w = nx / ny * h;

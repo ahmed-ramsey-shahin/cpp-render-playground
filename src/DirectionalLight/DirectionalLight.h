@@ -11,6 +11,8 @@ private:
     RGB intensity;
     Vector3 direction;
 public:
+    DirectionalLight();
+    DirectionalLight(const Vector3&);
     const RGB& get_intensity() const;
     void set_intensity(const RGB&);
     const Vector3& get_direction() const;
